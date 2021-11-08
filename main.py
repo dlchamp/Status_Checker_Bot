@@ -10,6 +10,7 @@ Set your bot token in the .env-sample file, then rename the file to .env
 import os
 import datetime
 import nextcord
+import asyncio
 from nextcord.ext import tasks
 from itertools import cycle
 from dotenv import load_dotenv
