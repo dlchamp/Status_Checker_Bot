@@ -52,7 +52,7 @@ async def on_ready():
 
 
 
-@tasks.loop(hours=24)
+@tasks.loop(hours=23)
 async def presence_check():
     '''
     Run once a day, first run will happen at bot start.
@@ -63,8 +63,8 @@ async def presence_check():
 
     # Seperate TIME into hours, minutes
     # Sleep until designated time
-    hour = TIME.split(":")[0]
-    minutes = TIME.split(":")[1]
+    hour = int(TIME.split(":")[0])
+    minutes = int(TIME.split(":")[1])
     await asyncio.sleep(schedule_time(hour,minutes))
 
     # Get channel from ID in variable
@@ -81,7 +81,6 @@ async def presence_check():
                         activity = a.name
                         if STATUS_MESSAGE in activity:
                             await channel.send(f'{member.name} needs XP. Status set to our group.')
-
 
 load_dotenv()
 bot.run(os.getenv('TOKEN'))
